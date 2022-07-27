@@ -1,6 +1,19 @@
-kind: ReplicaController
-apiVersion:
-metadata: 
-      name: rc
+kind: ReplicationController
+apiVersion: v1
+metadata:
+        name: v
 spec:
-         
+        replicas: 5
+        selector:
+                app: nginx
+        template:
+                metadata:
+                        name: v
+                        labels:
+                                app: nginx
+                spec:
+                        containers:
+                                - name: nginx
+                                  image: nginx
+                                  ports:
+                                          - containerPort: 80
