@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata:
+        name: demo
+spec: 
+          containers:
+                  - name: ubuntu
+                    image: ubuntu
+                    commnd: ["/bin/bash","-c"," while true; do echo this is sample yml file; sleep 50; done"]
