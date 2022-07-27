@@ -7,3 +7,7 @@ spec:
                   - name: ubuntu
                     image: ubuntu
                     commnd: ["/bin/bash","-c"," while true; do echo this is sample yml file; sleep 50; done"]
+                  - name: nginx
+                    image: nginx
+                    ports:
+                        containerPort: 80
