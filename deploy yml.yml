@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+        name: sample
+        labels:
+                apps: nginx
+spec:
+        replicas: 2
+        selector:
+                matchLabels:
+
+                        apps: nginx
+        template:
+                metadata:
+                        labels:
+                                apps: nginx
+                spec:
+                        containers:
+                                - name: ubuntu
+                                  image: ubuntu
+                                  command: ["/bin/bash","-c","while true; do echo vishal ; sleep 50;done"]
+
