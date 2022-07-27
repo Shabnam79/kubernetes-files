@@ -1,0 +1,21 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+        name: rc
+spec:
+        replicas: 5
+        selector:
+                matchExpression:
+                - {key: app, operator: In, values: [dev,nginx]}
+
+        template:
+                metadata:
+                        name: rc
+                        labels:
+                                app: nginx
+                spec:
+                        containers:
+                                - name: nginx
+                                  image: nginx
+                                  ports:
+                                          - containerPort: 80
