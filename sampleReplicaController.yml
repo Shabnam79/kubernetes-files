@@ -1,19 +1,18 @@
-kind: ReplicationController
 apiVersion: v1
+kind: ReplicationController
 metadata:
-        name: rc
+   name: testrc
 spec:
-        replicas: 5
-        selector:
-                app: nginx
-        template:
-                metadata:
-                        name: rc
-                        labels:
-                                app: nginx
-                spec:
-                        containers:
-                                - name: nginx
-                                  image: nginx
-                                  ports:
-                                          - containerPort: 80
+  replicas: 2
+  selector:
+    myname: shabnam
+  template:
+    metadata:
+      name: testrcpod
+      labels:
+        myname: shabnam
+    spec:
+      containers:
+       - name: coo
+         image: ubuntu
+         command: ["/bin/bash" , "-c", "while true; do echo shabnam; sleep 5 ; done"]
