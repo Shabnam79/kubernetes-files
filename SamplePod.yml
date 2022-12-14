@@ -1,13 +1,14 @@
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-        name: demo
-spec: 
-          containers:
-                  - name: ubuntu
-                    image: ubuntu
-                    commnd: ["/bin/bash","-c"," while true; do echo this is sample yml file; sleep 50; done"]
-                  - name: nginx
-                    image: nginx
-                    ports:
-                        containerPort: 80
+  name: testpod
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash","-c"," while true; do echo shabnam; sleep 50; done"]
+    - name: c01
+      image: httpd
+      ports:
+        - containerPort: 80 
+         // use this file for communication between two containers within the same pod
