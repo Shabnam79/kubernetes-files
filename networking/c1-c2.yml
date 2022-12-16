@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash","-c"," while true; do echo shabnam; sleep 50; done"]
+    - name: c01
+      image: httpd
+      ports:
+        - containerPort: 80 
+         // use this file for communication between two containers within the same pod
