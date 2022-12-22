@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shared-storage-example
+spec:
+  volumes:
+    - name: shared-data
+      emptyDir: {}
+  containers:
+    - name: container-1
+      image: ubuntu
+      volumeMounts:
+        - name: shared-data
+          mountPath: /tmp/data
+      command: ["/bin/bash","-c"," while true; do echo shabnam; sleep 50; done"]
+    - name: container-2
+      image: ubuntu
+      volumeMounts:
+        - name: shared-data
+          mountPath: /tmp/data2
+      command: ["/bin/bash","-c"," while true; do echo shabnam; sleep 50; done"]
+
