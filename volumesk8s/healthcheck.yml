@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    test: liveness
-  name: my-livenessprobe
+    test: liveness    
+    name: my-livenessprobe
 spec:
   containers:
   - name: liveness
     image: ubuntu
-    args:
+    args:     // on creating container it will run these cmds.
     - /bin/sh
     - -c
     - touch /tmp/healthy; sleep 1000
@@ -16,7 +16,7 @@ spec:
       exec:
         command:                                         
         - cat                
-        - /tmp/healthy
-      initialDelaySeconds: 5          
-      periodSeconds: 5                                 
-      timeoutSeconds: 30  
+        - /tmp/healthy  // tmp/healthy available hai ya nhi .. returns 0 on success 
+      initialDelaySeconds: 5      // while container is running .. after this run liveprobe test cmds    
+      periodSeconds: 5            // after 5 secs interval it will check healthcheck gain                     
+      timeoutSeconds: 30          // agr kuch reply nhi aata x secs tak to recreate kro 
