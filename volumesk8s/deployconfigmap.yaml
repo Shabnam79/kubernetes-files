@@ -1,3 +1,5 @@
+------------------------using volume------------------------------
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -17,3 +19,22 @@ spec:
        items:
        - key: sample.conf
          path: sample.conf
+         
+  ---------------------------using env variable--------------------
+  apiVersion: v1
+kind: Pod
+metadata:
+  name: myenvconfig
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo Shabnam; sleep 5 ; done"]
+    env:
+    - name: myenv    # env name in which the value of the key is stored
+      valueFrom:
+        configMapKeyRef:
+          name: democonf
+          key: sample.conf
+
+         
